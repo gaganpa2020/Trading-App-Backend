@@ -1,16 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace TradingCompany.AuthenticationService.Controllers
+﻿namespace TradingCompany.AuthenticationService.Controllers
 {
+	using Microsoft.AspNetCore.Mvc;
+	using Microsoft.Extensions.Caching.Distributed;
+	using Microsoft.Extensions.Logging;
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+
 	[ApiController]
 	[Route("[controller]")]
 	public class WeatherForecastController : ControllerBase
 	{
+		private readonly IDistributedCache _cache;
 		private static readonly string[] Summaries = new[]
 		{
 			"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -18,9 +19,10 @@ namespace TradingCompany.AuthenticationService.Controllers
 
 		private readonly ILogger<WeatherForecastController> _logger;
 
-		public WeatherForecastController(ILogger<WeatherForecastController> logger)
+		public WeatherForecastController(ILogger<WeatherForecastController> logger, IDistributedCache cache)
 		{
 			_logger = logger;
+			_cache = cache;
 		}
 
 		[HttpGet]

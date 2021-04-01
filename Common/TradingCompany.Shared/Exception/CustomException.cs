@@ -1,4 +1,4 @@
-﻿namespace TradingCompany.Common
+﻿namespace TradingCompany.Shared
 {
 	using System;
 

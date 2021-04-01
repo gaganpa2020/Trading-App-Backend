@@ -27,6 +27,8 @@ namespace TradingCompany.AuthenticationService
 		{
 			services.AddControllers();
 			services.AddSwaggerGen();
+			services.AddDistributedMemoryCache();
+			services.AddApplicationInsightsTelemetry();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
