@@ -6,28 +6,41 @@
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
+	using TradingCompany.Shared;
 
 	[ApiController]
 	[Route("[controller]")]
 	public class WeatherForecastController : ControllerBase
 	{
-		private readonly IDistributedCache _cache;
+		private readonly ICustomCache distributedCache;
+		private readonly IProvider provider;
 		private static readonly string[] Summaries = new[]
 		{
 			"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 		};
 
-		private readonly ILogger<WeatherForecastController> _logger;
+		private readonly ILogger<WeatherForecastController> logger;
 
-		public WeatherForecastController(ILogger<WeatherForecastController> logger, IDistributedCache cache)
+		public WeatherForecastController(ILogger<WeatherForecastController> logger
+			, ICustomCache distributedCache
+			, IProvider provider)
 		{
-			_logger = logger;
-			_cache = cache;
+			this.logger = logger;
+			this.distributedCache = distributedCache;
+			this.provider = provider;
 		}
 
 		[HttpGet]
 		public IEnumerable<WeatherForecast> Get()
 		{
+
+			if (distributedCache.Get<string>("test-key") == null)
+			{
+				distributedCache.Set("test-key", "Hello World!");
+			}
+
+			var test = distributedCache.Get<string>("test-key");
+
 			var rng = new Random();
 			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
 			{

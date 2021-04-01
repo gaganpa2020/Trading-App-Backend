@@ -15,9 +15,9 @@
 		private readonly HttpClient httpClient;
 		private readonly AsyncCircuitBreakerPolicy circuitBreakerPolicy;
 
-		public HttpProvider(HttpClient httpClient)
+		public HttpProvider()
 		{
-			this.httpClient = httpClient;
+			this.httpClient = new HttpClient();
 
 			circuitBreakerPolicy = Policy.Handle<Exception>()
 			   .CircuitBreakerAsync(EXCEPTION_COUNT, TimeSpan.FromMinutes(1),

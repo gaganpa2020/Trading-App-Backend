@@ -56,8 +56,7 @@ namespace TradingCompany.AuthenticationService
 
 		public void ConfigureContainer(ContainerBuilder builder)
 		{
-			builder.RegisterType<CustomCache>().As<ICustomCache>();
-			builder.RegisterType<HttpProvider>().As<IProvider>();
+			DependencyInjection.RegisterDependency(builder);
 		}
 	}
 }

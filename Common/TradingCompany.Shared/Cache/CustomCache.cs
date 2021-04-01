@@ -14,8 +14,14 @@
 
 		public T Get<T>(string key)
 		{
+			T result = default(T);
 			string data = distributedCache.GetString(key);
-			return JsonConvert.DeserializeObject<T>(data);
+			if (data != null)
+			{
+				result = JsonConvert.DeserializeObject<T>(data);
+			}
+
+			return result;
 		}
 
 		public void Set<T>(string key, T data)
