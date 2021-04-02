@@ -55,7 +55,7 @@ namespace TradingCompany.AuthenticationService
 		}
 
 		public void ConfigureContainer(ContainerBuilder builder)
-		{
+		{			
 			DependencyInjection.RegisterDependency(builder);
 		}
 	}
