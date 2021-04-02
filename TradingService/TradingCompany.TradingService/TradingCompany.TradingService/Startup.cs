@@ -1,4 +1,4 @@
-namespace TradingCompany.AccountService
+namespace TradingCompany.TradingService
 {
 	using Autofac;
 	using Microsoft.AspNetCore.Builder;
@@ -36,8 +36,8 @@ namespace TradingCompany.AccountService
 			app.UseSwagger();
 			app.UseSwaggerUI(c =>
 			{
-				c.DocumentTitle = "Account Services";
-				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Account Services");
+				c.DocumentTitle = "Trading Services";
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Trading Services");
 				c.RoutePrefix = string.Empty;
 			});
 			app.UseHttpsRedirection();
@@ -51,7 +51,6 @@ namespace TradingCompany.AccountService
 				endpoints.MapControllers();
 			});
 		}
-
 		public void ConfigureContainer(ContainerBuilder builder)
 		{
 			DependencyInjection.RegisterDependency(builder);
