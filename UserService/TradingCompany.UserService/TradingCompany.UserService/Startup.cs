@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using TradingCompany.Shared;
 
 namespace TradingCompany.UserService
@@ -22,8 +23,10 @@ namespace TradingCompany.UserService
 		{
 			services.AddControllers();
 			services.AddSwaggerGen();
+
 			services.AddDistributedMemoryCache();
 			services.AddApplicationInsightsTelemetry();
+			JWTToken.SetupJWTServices(services);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +49,8 @@ namespace TradingCompany.UserService
 
 			app.UseRouting();
 
+			app.UseAuthentication();
+
 			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
@@ -58,5 +63,7 @@ namespace TradingCompany.UserService
 		{
 			DependencyInjection.RegisterDependency(builder);
 		}
+
+
 	}
 }
