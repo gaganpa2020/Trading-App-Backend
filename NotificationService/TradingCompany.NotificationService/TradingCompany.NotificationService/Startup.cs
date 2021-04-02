@@ -1,4 +1,4 @@
-namespace TradingCompany.TradingService
+namespace TradingCompany.NotificationService
 {
 	using Autofac;
 	using Microsoft.AspNetCore.Builder;
@@ -35,8 +35,8 @@ namespace TradingCompany.TradingService
 			app.UseSwagger();
 			app.UseSwaggerUI(c =>
 			{
-				c.DocumentTitle = "Trading Services";
-				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Trading Services");
+				c.DocumentTitle = "Notification Services";
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Notification Services");
 				c.RoutePrefix = string.Empty;
 			});
 			app.UseHttpsRedirection();
@@ -50,6 +50,7 @@ namespace TradingCompany.TradingService
 				endpoints.MapControllers();
 			});
 		}
+
 		public void ConfigureContainer(ContainerBuilder builder)
 		{
 			DependencyInjection.RegisterDependency(builder);

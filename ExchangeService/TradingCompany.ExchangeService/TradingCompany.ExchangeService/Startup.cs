@@ -1,4 +1,4 @@
-namespace TradingCompany.TradingService
+namespace TradingCompany.ExchangeService
 {
 	using Autofac;
 	using Microsoft.AspNetCore.Builder;
@@ -35,8 +35,8 @@ namespace TradingCompany.TradingService
 			app.UseSwagger();
 			app.UseSwaggerUI(c =>
 			{
-				c.DocumentTitle = "Trading Services";
-				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Trading Services");
+				c.DocumentTitle = "Exchange Services";
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Exchange Services");
 				c.RoutePrefix = string.Empty;
 			});
 			app.UseHttpsRedirection();
