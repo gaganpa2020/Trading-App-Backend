@@ -22,7 +22,29 @@ namespace TradingCompany.UserService
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllers();
-			services.AddSwaggerGen();
+			services.AddSwaggerGen(config =>
+			{
+				config.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+				{
+					In = ParameterLocation.Header,
+					Description = "Please insert JWT with Bearer into field",
+					Name = "Authorization",
+					Type = SecuritySchemeType.ApiKey
+				});
+				config.AddSecurityRequirement(new OpenApiSecurityRequirement {
+				{
+					new OpenApiSecurityScheme
+					{
+					Reference = new OpenApiReference
+					{
+						Type = ReferenceType.SecurityScheme,
+						Id = "Bearer"
+					}
+					},
+					new string[] { }
+				}
+				});
+			});
 
 			services.AddDistributedMemoryCache();
 			services.AddApplicationInsightsTelemetry();
