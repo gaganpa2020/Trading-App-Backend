@@ -18,5 +18,9 @@
     <ProjectReference Include="..\..\..\Common\TradingCompany.Shared\TradingCompany.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
 
 </Project>
