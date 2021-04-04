@@ -5,9 +5,10 @@
 
 	public interface IAccountRepository
 	{
-		void CreateAccount(UserTradingAccount userAccount);
-		IList<UserTradingAccount> GetAllUserAccount();
-		UserTradingAccount GetUserAccount(int AccountId);
-		UserTradingAccount GetUserAccount(string email);
+		void CreateAccount(UserAccountEntity userAccount);
+		IList<UserAccountEntity> GetAllUserAccount();
+		UserAccountEntity GetUserAccount(int AccountId);
+		UserAccountEntity GetUserAccount(string email);
+		void UpdateBalance(int accountId, double balance);
 	}
 }
