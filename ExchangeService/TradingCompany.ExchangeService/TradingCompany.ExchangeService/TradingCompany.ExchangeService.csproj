@@ -15,6 +15,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\TradingCompany.Shared\TradingCompany.Shared.csproj" />
+    <ProjectReference Include="..\TradingCompany.Models\TradingCompany.Models.csproj" />
+    <ProjectReference Include="..\TradingCompany.Repository\TradingCompany.Repository.csproj" />
   </ItemGroup>
 
 
