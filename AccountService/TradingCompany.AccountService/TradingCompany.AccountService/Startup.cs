@@ -6,6 +6,7 @@ namespace TradingCompany.AccountService
 	using Microsoft.Extensions.Configuration;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Hosting;
+	using Microsoft.OpenApi.Models;
 	using TradingCompany.Shared;
 
 	public class Startup
@@ -21,9 +22,33 @@ namespace TradingCompany.AccountService
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllers();
-			services.AddSwaggerGen();
+			services.AddSwaggerGen(config =>
+			{
+				config.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+				{
+					In = ParameterLocation.Header,
+					Description = "Please insert JWT with Bearer into field",
+					Name = "Authorization",
+					Type = SecuritySchemeType.ApiKey
+				});
+				config.AddSecurityRequirement(new OpenApiSecurityRequirement {
+				{
+					new OpenApiSecurityScheme
+					{
+					Reference = new OpenApiReference
+					{
+						Type = ReferenceType.SecurityScheme,
+						Id = "Bearer"
+					}
+					},
+					new string[] { }
+				}
+				});
+			});
+
 			services.AddDistributedMemoryCache();
 			services.AddApplicationInsightsTelemetry();
+			JWTToken.SetupJWTServices(services);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +68,8 @@ namespace TradingCompany.AccountService
 			app.UseHttpsRedirection();
 
 			app.UseRouting();
+
+			app.UseAuthentication();
 
 			app.UseAuthorization();
 
