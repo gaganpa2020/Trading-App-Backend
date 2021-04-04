@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradingCompany.UserService", "TradingCompany.UserService\TradingCompany.UserService.csproj", "{A01E286D-3847-4A1F-ABF0-78ADD63C287C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradingCompany.TransactionHistory", "TradingCompany.TransactionHistory\TradingCompany.TransactionHistory.csproj", "{A01E286D-3847-4A1F-ABF0-78ADD63C287C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{03C93E23-729B-4E77-86DE-273AE86D22BD}"
 EndProject
