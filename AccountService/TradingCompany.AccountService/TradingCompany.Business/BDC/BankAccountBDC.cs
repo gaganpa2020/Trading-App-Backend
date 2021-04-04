@@ -14,16 +14,19 @@
 		private readonly IPaymentGateway paymentGateway;
 		private readonly IRequestValidator requestValidator;
 		private readonly INotificationServiceProvider notificationServiceProvider;
+		private readonly ITradingHistoryServiceProvider tradingHistoryServiceProvider;
 
 		public BankAccountBDC(IBankAccountRepository bankAccountRepository
 			, IPaymentGateway paymentGateway
 			, IRequestValidator requestValidator
-			, INotificationServiceProvider notificationServiceProvider)
+			, INotificationServiceProvider notificationServiceProvider
+			, ITradingHistoryServiceProvider tradingHistoryServiceProvider)
 		{
 			this.bankAccountRepository = bankAccountRepository;
 			this.paymentGateway = paymentGateway;
 			this.requestValidator = requestValidator;
 			this.notificationServiceProvider = notificationServiceProvider;
+			this.tradingHistoryServiceProvider = tradingHistoryServiceProvider;
 		}
 
 		public void LinkBankAccount(BankAccount bankAccount)
@@ -63,7 +66,7 @@
 						bankAccountRepository.AddMoney(request);
 
 						notificationServiceProvider.SendNotification("credit transaction successful."); // Send message in the queue for notification
-						// Send message in the quest for transaction history
+						this.tradingHistoryServiceProvider.AddBankTransactionEvent(request); // Send message in the quest for transaction history
 						result = true;
 					}
 				}
@@ -74,7 +77,7 @@
 						bankAccountRepository.WithdrawMoeny(request);
 
 						notificationServiceProvider.SendNotification("debit transaction successful."); // Send message in the queue for notification
-						 // Send message in the queue for transaction history
+						this.tradingHistoryServiceProvider.AddBankTransactionEvent(request); // Send message in the queue for transaction history
 						result = true;
 					}
 				}
