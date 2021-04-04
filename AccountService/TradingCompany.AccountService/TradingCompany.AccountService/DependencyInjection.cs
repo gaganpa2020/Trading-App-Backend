@@ -16,7 +16,8 @@
 
 			// TradingCompany.Business
 			builder.RegisterType<BankAccountBDC>().As<IBankAccountBDC>();
-			builder.RegisterType<BankAccountBDC>().As<IBankAccountBDC>();
+			builder.RegisterType<TradingAccountBDC>().As<ITradingAccountBDC>();
+			builder.RegisterType<RequestValidator>().As<IRequestValidator>();
 
 			// TradingCompany.Integration
 			builder.RegisterType<NotificationServiceProvider>().As<INotificationServiceProvider>();

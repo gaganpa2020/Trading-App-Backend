@@ -87,5 +87,10 @@
 
 			return result;
 		}
+
+		public IList<BankAccount> GetBankAccounts()
+		{
+			return bankAccountRepository.GetAllBankAccounts();
+		}
 	}
 }

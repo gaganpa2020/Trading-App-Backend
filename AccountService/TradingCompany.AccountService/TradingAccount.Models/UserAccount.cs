@@ -1,6 +1,6 @@
 ﻿namespace TradingCompany.Models
 {
-	public class UserAccount
+	public class UserTradingAccount
 	{
 		public int AccountId { get; set; }
 		public string Email { get; set; }

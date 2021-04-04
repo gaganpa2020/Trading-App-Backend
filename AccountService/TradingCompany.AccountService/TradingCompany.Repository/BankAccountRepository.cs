@@ -7,7 +7,10 @@
 
 	public class BankAccountRepository : IBankAccountRepository
 	{
-		private static readonly IList<BankAccount> bankAccounts = new List<BankAccount>();
+		private static readonly IList<BankAccount> bankAccounts = new List<BankAccount>()
+		{
+			new BankAccount(){ BankAccountId=1, CustomerName="Rangeela", AccountNumber="4544-4456-9911", RoutingNumber="333222", AccountBalance=100  }
+		};
 
 		public void LinkMyBankAccount(BankAccount bankAccount)
 		{

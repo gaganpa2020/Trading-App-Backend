@@ -8,24 +8,27 @@
 	{
 		// This is a temp collection for demo purpose. 
 		// In the real world we would use SQL/Cosmos to maintain this data. 
-		private static readonly IList<UserAccount> userAccounts = new List<UserAccount>();
+		private static readonly IList<UserTradingAccount> userAccounts = new List<UserTradingAccount>()
+		{
+		new UserTradingAccount(){ AccountId=1, SSN="111-111-1111", Phone="444-443-4445", City="Philadelphia", State="PA", Email="test@gmail.com" }
+		};
 
-		public void CreateAccount(UserAccount userAccount)
+		public void CreateAccount(UserTradingAccount userAccount)
 		{
 			userAccounts.Add(userAccount);
 		}
 
-		public IList<UserAccount> GetAllUserAccount()
+		public IList<UserTradingAccount> GetAllUserAccount()
 		{
 			return userAccounts;
 		}
 
-		public UserAccount GetUserAccount(int AccountId)
+		public UserTradingAccount GetUserAccount(int AccountId)
 		{
 			return userAccounts.FirstOrDefault(x => x.AccountId == AccountId);
 		}
 
-		public UserAccount GetUserAccount(string email)
+		public UserTradingAccount GetUserAccount(string email)
 		{
 			return userAccounts.FirstOrDefault(x => x.Email.Equals(email, System.StringComparison.OrdinalIgnoreCase));
 		}
