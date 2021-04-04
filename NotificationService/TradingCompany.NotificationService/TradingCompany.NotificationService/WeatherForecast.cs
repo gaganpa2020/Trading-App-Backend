@@ -1,6 +1,6 @@
 using System;
 
-namespace TradingCompany.AuthenticationService
+namespace TradingCompany.NotificationService
 {
 	public class WeatherForecast
 	{

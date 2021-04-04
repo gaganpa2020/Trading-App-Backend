@@ -2,9 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>1d1ff974-8585-43d2-bb04-3dbe3d5546e5</UserSecretsId>
+    <UserSecretsId>dc333f2e-ae98-4aa1-95f3-ea43a7b919f7</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>.</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\TradingCompany.Shared\TradingCompany.Shared.csproj" />
+    <ProjectReference Include="..\..\..\Common\TradingCompany.Shared\TradingCompany.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
 
 
