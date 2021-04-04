@@ -23,7 +23,6 @@
 			builder.RegisterType<NotificationServiceProvider>().As<INotificationServiceProvider>();
 			builder.RegisterType<MockPaymentGateway>().As<IPaymentGateway>();
 			builder.RegisterType<TradingHistoryServiceProvider>().As<ITradingHistoryServiceProvider>();
-			builder.RegisterType<TradingServiceProvider>().As<ITradingServiceProvider>();
 
 			// TradingCompany.Repository
 			builder.RegisterType<AccountRepository>().As<IAccountRepository>();
