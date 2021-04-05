@@ -39,7 +39,7 @@
 				throw new CustomException("Invalid ticker/price send for transaction");
 			}
 
-			if (tradeRequest.TradeType == TradeType.Buy 
+			if (tradeRequest.TradeType == TradeType.Buy
 				&& this.accountServiceProvider.ValidateAccountBalance(tradeRequest.UserAccountId, tradeRequest.Price))
 			{
 				CommitTrade(tradeRequest);
@@ -51,6 +51,25 @@
 				CommitTrade(tradeRequest);
 				this.notificationServiceProvider.SendNotification($"Sell request for {tradeRequest.Ticker} is completed for no of shares {tradeRequest.StockCount}");
 			}
+		}
+
+		public void RunAutomatedTransaction(TriggerTradeModel tradeRequest)
+		{
+			/*
+			 * Validation using "TradingCache" to verify automated trade requerst. 
+			 */
+
+			RunTransaction(new TradeModel()
+			{
+				UserAccountId = tradeRequest.UserAccountId,
+				RequestTime = tradeRequest.RequestTime,
+				StockCount = tradeRequest.NoOfStocks,
+				Ticker = tradeRequest.Ticker,
+				TradeType = tradeRequest.TradeType,
+				Price = tradeRequest.Price
+			});
+			this.accountServiceProvider.UpdateTrigger(tradeRequest.TriggerId, TriggerStatus.Completed);
+			this.notificationServiceProvider.SendNotification("Trigger executed!");
 		}
 
 		private void CommitTrade(TradeModel tradeRequest)

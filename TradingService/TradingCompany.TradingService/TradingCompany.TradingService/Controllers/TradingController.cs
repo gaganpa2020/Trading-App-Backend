@@ -37,6 +37,11 @@
 		[HttpPost("populatecache")]
 		public void Post(UserAccountEntity request)
 		{
+			/**
+			 * This method is responsible for populating Trading cache.
+			 * This endpoint will be called from Account service, this will help quickly process the trade 
+			 * if it is meeting criteria. 
+			 * **/
 		}
 	}
 }

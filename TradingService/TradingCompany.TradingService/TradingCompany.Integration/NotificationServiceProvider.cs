@@ -7,13 +7,6 @@ namespace TradingCompany.Integration
 {
 	public class NotificationServiceProvider: INotificationServiceProvider
 	{
-		private readonly IProvider httpProvider;
-
-		public NotificationServiceProvider(IProvider provider)
-		{
-			this.httpProvider = provider;
-		}
-
 		public void SendNotification(string message)
 		{
 			// In the real world app, this method will add a message in a queue to be picked by notification service and

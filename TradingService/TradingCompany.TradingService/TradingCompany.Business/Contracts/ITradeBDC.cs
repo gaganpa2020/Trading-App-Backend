@@ -7,5 +7,6 @@
 	{
 		void RunTransaction(TradeModel tradeRequest);
 		IList<TradeModel> GetAllTradeData();
+		void RunAutomatedTransaction(TriggerTradeModel tradeRequest);
 	}
 }
