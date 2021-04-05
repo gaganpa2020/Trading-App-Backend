@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  tradingcompany.notificationservice:
+    image: ${DOCKER_REGISTRY-}tradingcompanynotificationservice
+    build:
+      context: .
+      dockerfile: TradingCompany.NotificationService/Dockerfile

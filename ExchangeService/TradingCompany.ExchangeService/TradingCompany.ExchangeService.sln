@@ -11,9 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{D11C11
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradingCompany.Shared", "..\..\Common\TradingCompany.Shared\TradingCompany.Shared.csproj", "{DA2288B2-7E09-402E-8337-7FC6AB0A7004}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradingCompany.Models", "TradingCompany.Models\TradingCompany.Models.csproj", "{9AC2AC67-B8B7-4AD6-B29C-00F198B89597}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradingCompany.Models", "TradingCompany.Models\TradingCompany.Models.csproj", "{9AC2AC67-B8B7-4AD6-B29C-00F198B89597}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradingCompany.Repository", "TradingCompany.Repository\TradingCompany.Repository.csproj", "{18F9EBB7-E752-49BD-AFE0-CBEB905E7009}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradingCompany.Repository", "TradingCompany.Repository\TradingCompany.Repository.csproj", "{18F9EBB7-E752-49BD-AFE0-CBEB905E7009}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1B13CC3E-4A35-4093-BC04-4C2B00CAB635}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{18F9EBB7-E752-49BD-AFE0-CBEB905E7009}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18F9EBB7-E752-49BD-AFE0-CBEB905E7009}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18F9EBB7-E752-49BD-AFE0-CBEB905E7009}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B13CC3E-4A35-4093-BC04-4C2B00CAB635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B13CC3E-4A35-4093-BC04-4C2B00CAB635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B13CC3E-4A35-4093-BC04-4C2B00CAB635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B13CC3E-4A35-4093-BC04-4C2B00CAB635}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
