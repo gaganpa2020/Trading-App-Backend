@@ -11,6 +11,7 @@
 	public class BankAccountBDC : IBankAccountBDC
 	{
 		private readonly IBankAccountRepository bankAccountRepository;
+		private readonly IAccountRepository accountRepository;
 		private readonly IPaymentGateway paymentGateway;
 		private readonly IRequestValidator requestValidator;
 		private readonly INotificationServiceProvider notificationServiceProvider;
@@ -20,9 +21,11 @@
 			, IPaymentGateway paymentGateway
 			, IRequestValidator requestValidator
 			, INotificationServiceProvider notificationServiceProvider
-			, ITradingHistoryServiceProvider tradingHistoryServiceProvider)
+			, ITradingHistoryServiceProvider tradingHistoryServiceProvider
+			, IAccountRepository accountRepository)
 		{
 			this.bankAccountRepository = bankAccountRepository;
+			this.accountRepository = accountRepository;
 			this.paymentGateway = paymentGateway;
 			this.requestValidator = requestValidator;
 			this.notificationServiceProvider = notificationServiceProvider;
@@ -64,7 +67,7 @@
 					if (requestValidator.ValidateCreditRequest(bankAccount, request))
 					{
 						bankAccountRepository.AddMoney(request);
-
+						accountRepository.UpdateBalance(request.AccountId, request.Amount);
 						notificationServiceProvider.SendNotification("credit transaction successful."); // Send message in the queue for notification
 						this.tradingHistoryServiceProvider.AddBankTransactionEvent(request); // Send message in the quest for transaction history
 						result = true;
@@ -75,7 +78,7 @@
 					if (requestValidator.ValidateDebitRequest(bankAccount, request))
 					{
 						bankAccountRepository.WithdrawMoeny(request);
-
+						accountRepository.UpdateBalance(request.AccountId, (-1 * request.Amount));
 						notificationServiceProvider.SendNotification("debit transaction successful."); // Send message in the queue for notification
 						this.tradingHistoryServiceProvider.AddBankTransactionEvent(request); // Send message in the queue for transaction history
 						result = true;

@@ -7,6 +7,7 @@
 	using Polly;
 	using Polly.CircuitBreaker;
 	using Newtonsoft.Json;
+	using System.Net.Http.Headers;
 
 	public class HttpProvider : IProvider
 	{
@@ -17,7 +18,11 @@
 
 		public HttpProvider()
 		{
-			this.httpClient = new HttpClient();
+			HttpClientHandler clientHandler = new HttpClientHandler();
+			clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+			// Pass the handler to httpclient(from you are calling api)
+			this.httpClient = new HttpClient(clientHandler);
 
 			circuitBreakerPolicy = Policy.Handle<Exception>()
 			   .CircuitBreakerAsync(EXCEPTION_COUNT, TimeSpan.FromMinutes(1),
@@ -46,9 +51,13 @@
 
 		public async Task<HttpResponseMessage> Post<T>(string url, IDictionary<string, string> headers, T content)
 		{
-			AddHeaders(headers);
-
 			HttpContent requestContent = new StringContent(JsonConvert.SerializeObject(content));
+			requestContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+			AddHeaders(headers);
+			httpClient.DefaultRequestHeaders
+					  .Accept
+					  .Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 			return await Policy
 				.Handle<Exception>()

@@ -21,7 +21,7 @@ namespace TradingCompany.TradingService
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddControllers(); 
+			services.AddControllers();
 			services.AddSwaggerGen(config =>
 			{
 				config.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -80,7 +80,9 @@ namespace TradingCompany.TradingService
 		}
 		public void ConfigureContainer(ContainerBuilder builder)
 		{
-			DependencyInjection.RegisterDependency(builder);
+			DependencyInjection.RegisterDependency(builder);			
+			new AutomatedTradingManager(builder).RegisterQueueSubscriber();
 		}
+
 	}
 }

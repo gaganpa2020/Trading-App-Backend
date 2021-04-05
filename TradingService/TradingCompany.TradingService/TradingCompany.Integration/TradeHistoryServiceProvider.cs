@@ -8,13 +8,6 @@ namespace TradingCompany.Integration
 {
 	public class TradeHistoryServiceProvider: ITradeHistoryServiceProvider
 	{
-		private readonly IProvider httpProvider;
-
-		public TradeHistoryServiceProvider(IProvider provider)
-		{
-			this.httpProvider = provider;
-		}
-
 		public void RegisterTrade(TradeModel tradeRequest)
 		{
 			//In the real world we would call the trade history service  to register trade records. 

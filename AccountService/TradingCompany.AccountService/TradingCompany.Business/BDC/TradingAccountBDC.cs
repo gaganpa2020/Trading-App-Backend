@@ -27,10 +27,20 @@
 				throw new CustomException("Invalid account details");
 			}
 
-			this.accountRepository.CreateAccount(userAccount);
+			this.accountRepository.CreateAccount(new UserAccountEntity()
+			{
+				AccountId = userAccount.AccountId,
+				Balance = userAccount.Balance,
+				City = userAccount.City,
+				Email = userAccount.Email,
+				Phone = userAccount.Phone,
+				SSN = userAccount.SSN,
+				State = userAccount.State,
+				stocks = new Dictionary<string, int>()
+			});
 		}
 
-		public IList<UserTradingAccount> GetAllUserAccount()
+		public IList<UserAccountEntity> GetAllUserAccount()
 		{
 			return this.accountRepository.GetAllUserAccount();
 		}

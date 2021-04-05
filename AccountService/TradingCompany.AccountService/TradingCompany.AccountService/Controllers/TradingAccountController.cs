@@ -25,7 +25,7 @@
 		}
 
 		[HttpGet]
-		public IEnumerable<UserTradingAccount> Get()
+		public IEnumerable<UserAccountEntity> Get()
 		{
 			return tradingAccountBDC.GetAllUserAccount();
 		}

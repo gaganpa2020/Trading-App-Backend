@@ -6,6 +6,6 @@
 	public interface ITradingAccountBDC
 	{
 		void CreateAccount(UserTradingAccount userAccount);
-		IList<UserTradingAccount> GetAllUserAccount();
+		IList<UserAccountEntity> GetAllUserAccount();
 	}
 }
