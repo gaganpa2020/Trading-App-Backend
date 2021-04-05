@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  tradingcompany.exchangeservice:
+    image: ${DOCKER_REGISTRY-}tradingcompanyexchangeservice
+    build:
+      context: .
+      dockerfile: TradingCompany.ExchangeService/Dockerfile
