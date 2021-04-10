@@ -1,6 +1,7 @@
 namespace TradingCompany.TradingService
 {
 	using Autofac;
+	using Autofac.Extensions.DependencyInjection;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Hosting;
 	using Microsoft.Extensions.Configuration;
@@ -49,6 +50,8 @@ namespace TradingCompany.TradingService
 			services.AddDistributedMemoryCache();
 			services.AddApplicationInsightsTelemetry();
 			JWTToken.SetupJWTServices(services);
+
+
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,11 +80,13 @@ namespace TradingCompany.TradingService
 			{
 				endpoints.MapControllers();
 			});
+
+			var autfactContainer = app.ApplicationServices.GetAutofacRoot();
+			autfactContainer.Resolve<IAutomatedTradingManager>().RegisterQueueSubscriber();
 		}
 		public void ConfigureContainer(ContainerBuilder builder)
 		{
-			DependencyInjection.RegisterDependency(builder);			
-			new AutomatedTradingManager(builder).RegisterQueueSubscriber();
+			DependencyInjection.RegisterDependency(builder);
 		}
 
 	}

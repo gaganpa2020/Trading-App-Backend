@@ -13,6 +13,7 @@
 			// TradingCompany.Shared
 			builder.RegisterType<CustomCache>().As<ICustomCache>();
 			builder.RegisterType<HttpProvider>().As<IProvider>();
+			builder.RegisterType<TokenHelper>().As<ITokenHelper>();
 
 			// TradingCompany.Business
 			builder.RegisterType<TradeBDC>().As<ITradeBDC>();
@@ -25,6 +26,9 @@
 
 			// TradingCompany.Repository
 			builder.RegisterType<TradeRepository>().As<ITradeRepository>();
+
+			// Queue subscriber 
+			builder.RegisterType<AutomatedTradingManager>().As<IAutomatedTradingManager>();			
 		}
 	}
 }

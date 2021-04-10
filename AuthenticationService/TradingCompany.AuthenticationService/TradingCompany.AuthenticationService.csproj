@@ -17,7 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\TradingCompany.Shared\TradingCompany.Shared.csproj" />
+    <ProjectReference Include="..\..\Common\TradingCompany.Shared\TradingCompany.Shared.csproj">
+      <Private>true</Private>
+    </ProjectReference>
   </ItemGroup>
 
 

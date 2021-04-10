@@ -5,7 +5,7 @@
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>6513ff47-fc36-42b1-a955-0c9886c33c01</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/weatherforecast</DockerServiceUrl>
+    <DockerServiceUrl>{Scheme}://localhost:27143</DockerServiceUrl>
     <DockerServiceName>tradingcompany.authenticationservice</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>

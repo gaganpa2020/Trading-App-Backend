@@ -3,31 +3,22 @@
 namespace TradingCompany.TradingService
 {
 	using Autofac;
-	using Microsoft.AspNetCore.Builder;
-	using Microsoft.AspNetCore.Hosting;
 	using Microsoft.Azure.ServiceBus;
-	using Microsoft.Extensions.Configuration;
-	using Microsoft.Extensions.DependencyInjection;
-	using Microsoft.Extensions.Hosting;
-	using Microsoft.OpenApi.Models;
 	using System;
 	using System.Text;
 	using System.Threading;
 	using System.Threading.Tasks;
 	using TradingCompany.Business;
-	using TradingCompany.Integration;
 	using TradingCompany.Models;
-	using TradingCompany.Repository;
-	using TradingCompany.Shared;
 
-	public class AutomatedTradingManager
+	public class AutomatedTradingManager : IAutomatedTradingManager
 	{
 		private QueueClient queueClient;
-		private ContainerBuilder builder;
+		private IComponentContext componentContext;
 
-		public AutomatedTradingManager(ContainerBuilder builder)
+		public AutomatedTradingManager(IComponentContext componentContext)
 		{
-			this.builder = builder;
+			this.componentContext = componentContext;
 		}
 
 		public void RegisterQueueSubscriber()
@@ -46,7 +37,7 @@ namespace TradingCompany.TradingService
 
 		public async Task Handle(Message message, CancellationToken cancelToken)
 		{
-			ITradeBDC tradeBDC = builder.Build().Resolve<ITradeBDC>();
+			ITradeBDC tradeBDC = this.componentContext.Resolve<ITradeBDC>();
 
 			if (message == null)
 				throw new ArgumentNullException(nameof(message));

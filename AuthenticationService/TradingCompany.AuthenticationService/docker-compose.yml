@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  tradingcompany.authenticationservice:
-    image: ${DOCKER_REGISTRY-}tradingcompanyauthenticationservice
-    build:
-      context: .
-      dockerfile: Dockerfile

@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  tradingcompany.authenticationservice:
+    image: tradingcompanyauthenticationservice
+    ports: 
+      - 45332:80
+    build:
+      context: ./AuthenticationService/TradingCompany.AuthenticationService
+      dockerfile: Dockerfile
