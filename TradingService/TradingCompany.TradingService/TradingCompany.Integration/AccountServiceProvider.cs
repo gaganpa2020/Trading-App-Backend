@@ -47,7 +47,10 @@
 		public void UpdateTrigger(Guid triggerId, TriggerStatus triggerStatus)
 		{
 			IDictionary<string, string> headers = new Dictionary<string, string>();
-			headers.Add("Authorization", $"Bearer {tokenHelper.AccessToken()}");
+			/**
+			*  Add Authentication headers
+			*  headers.Add("Authorization", $"Bearer {tokenHelper.AccessToken()}");
+			*/
 			HttpResponseMessage response = httpProvider.Post<string>($"{AccountServiceBaseUrl}/Trigger/update?triggerId={triggerId}&triggerStatus={triggerStatus}", headers, string.Empty).Result;
 		}
 	}
