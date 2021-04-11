@@ -2,6 +2,24 @@
 
 Backend application for the Trading application. 
 
+# Prerequisites to run the system
+1. Visual Studio 2019 (with all the updates)
+2. Docker desktop for Windows (latest)
+ 
+# How to run services 
+## Option-1: Docker-Compose
+#### Click on the start.sh file
+  -> start.sh
+     -> build-script.sh
+     -> docker-compose up 
+![image](https://user-images.githubusercontent.com/2247913/114290168-859fd000-9a4b-11eb-888f-058f620d26af.png)
+
+## Option-2: Visual Studio 2019
+1. Open the solution for each service and run each of the project. 
+2. Run Postman collection to validate use cases. 
+
+# Specs
+
 # Identified services
 ![image](https://user-images.githubusercontent.com/2247913/113530494-3150a800-9594-11eb-9c26-108f6bbdb70c.png)
 
@@ -22,13 +40,6 @@ https://github.com/gaganpa2020/Trading-App-Backend/blob/main/Gagan_TradingApp_Mi
 
 # Branch deployment strategy with environments
 ![image](https://user-images.githubusercontent.com/2247913/113530791-ed11d780-9594-11eb-9603-c14d4b9d9763.png)
-
-# How to run services 
-## Option-1: Docker-Compose
-Each service has a defined docker compose file. Run the the docker compose file using command 'docker-compose -f docker-compose.yml up'.
-## Option-2: Visual Studio 2019
-1. Open the solution for each service and run each of the project. 
-2. Run Postman collection to validate use cases. 
 
 # Assignment use cases: 
 
