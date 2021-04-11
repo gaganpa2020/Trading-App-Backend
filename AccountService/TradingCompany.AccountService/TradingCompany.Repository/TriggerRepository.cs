@@ -8,7 +8,22 @@
 
 	public class TriggerRepository : ITriggerRepository
 	{
-		private static readonly IList<TradeTriggerEntity> triggers = new List<TradeTriggerEntity>();
+		private static readonly IList<TradeTriggerEntity> triggers = new List<TradeTriggerEntity>()
+		{
+		 new TradeTriggerEntity()
+		 {
+			 AccountId=1,
+			 BankAccountId=1,
+			 Ticker="TSLA",
+			 TradeType= TradeType.Buy,
+			 ExpiryTimeStamp = DateTime.Now,
+			 NoOfStocks=10,
+			 PriceLimit=600,
+			 Status= TriggerStatus.Active,
+			 TriggerId= Guid.Parse("46cff848-0727-4d82-8ec5-b038791a6c94")
+		 }
+		}
+		;
 		public void SetupTrigger(TradeTriggerEntity tradeTriggerEntity)
 		{
 			triggers.Add(tradeTriggerEntity);

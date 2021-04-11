@@ -11,7 +11,7 @@
 
 	[ApiController]
 	[Route("[controller]")]
-	[Authorize]
+	//[Authorize]
 	public class TriggerController : ControllerBase
 	{
 		private readonly ILogger<TriggerController> logger;
