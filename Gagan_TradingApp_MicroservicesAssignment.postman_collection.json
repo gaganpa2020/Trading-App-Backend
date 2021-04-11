@@ -324,12 +324,10 @@
 							}
 						],
 						"url": {
-							"raw": "https://localhost:27146/Trading",
-							"protocol": "https",
+							"raw": "{{TradingService}}/Trading",
 							"host": [
-								"localhost"
+								"{{TradingService}}"
 							],
-							"port": "27146",
 							"path": [
 								"Trading"
 							]
@@ -429,6 +427,29 @@
 			"name": "Use Case-5 | A customer can set triggers to automatically buy/sell certain stock holdings when they reach a set threshold price.",
 			"item": [
 				{
+					"name": "Get Triggers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{AccountService}}/Trigger",
+							"host": [
+								"{{AccountService}}"
+							],
+							"path": [
+								"Trigger"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Setup Buy Trigger",
 					"request": {
 						"method": "POST",
@@ -461,29 +482,6 @@
 					"response": []
 				},
 				{
-					"name": "Get Triggers",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{AccountService}}/Trigger",
-							"host": [
-								"{{AccountService}}"
-							],
-							"path": [
-								"Trigger"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Simulate Analytics Service for defined trigger",
 					"event": [
 						{
@@ -491,7 +489,7 @@
 							"script": {
 								"exec": [
 									"const sasReq = {\r",
-									"    url: 'https://localhost:27143/api/Token/getsastoken',\r",
+									"    url: pm.variables.get(\"AuthenticationService\")+ '/api/Token/getsastoken',\r",
 									"    method: 'GET',\r",
 									"    header: 'Content-Type: application/json; charset=utf-8',\r",
 									"    body: {\r",
@@ -503,6 +501,8 @@
 									"pm.sendRequest(sasReq, function (err, response) {  \r",
 									"    pm.collectionVariables.set(\"sastoken\", response.json().sastoken);\r",
 									"});\r",
+									"\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript"
@@ -531,7 +531,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"triggerId\": \"46cff848-0727-4d82-8ec5-b038791a6c94\",\r\n    \"accountId\": 1,\r\n    \"bankAccountId\": 1,\r\n    \"ticker\": \"TSLA\",\r\n    \"tradeType\": 1,\r\n    \"noOfStocks\": 10,\r\n    \"requestTime\": \"4/4/2021\",\r\n    \"price\": 600\r\n}",
+							"raw": "{\r\n    \"triggerId\": \"a56d8303-ab77-4713-b16f-a460caf4deb8\",\r\n    \"accountId\": 1,\r\n    \"bankAccountId\": 1,\r\n    \"ticker\": \"TSLA\",\r\n    \"tradeType\": 1,\r\n    \"noOfStocks\": 10,\r\n    \"requestTime\": \"4/4/2021\",\r\n    \"price\": 600\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -565,7 +565,7 @@
 				"type": "text/javascript",
 				"exec": [
 					"const loginRequestCS = {",
-					"    url: 'https://localhost:27143/api/Token/gettoken',",
+					"    url: pm.variables.get(\"AuthenticationService\") + '/api/Token/gettoken',",
 					"    method: 'POST',",
 					"    header: 'Content-Type: application/json; charset=utf-8',",
 					"    body: {",
@@ -594,34 +594,42 @@
 	],
 	"variable": [
 		{
+			"id": "86361afc-ae28-4e5b-8872-be44ceb3954b",
 			"key": "token",
 			"value": "token"
 		},
 		{
+			"id": "2b7450d5-8baf-416b-81c3-c971740405f9",
 			"key": "AuthenticationService",
-			"value": "https://localhost:27143"
+			"value": "http://localhost:27143"
 		},
 		{
+			"id": "9411ea96-05c6-4d11-88ba-d267f52d3e23",
 			"key": "AccountService",
-			"value": "https://localhost:27145"
+			"value": "http://localhost:27145"
 		},
 		{
+			"id": "d3ebf4c8-7548-4916-a472-3de91bcf9b86",
 			"key": "random_number",
 			"value": "1"
 		},
 		{
+			"id": "7d043a11-e20f-4f47-b0fe-e459c3dac166",
 			"key": "TradingService",
-			"value": "https://localhost:27146"
+			"value": "http://localhost:27146"
 		},
 		{
+			"id": "c7598bd3-e813-45a3-9894-e51dff509b90",
 			"key": "ExchangeService",
-			"value": "https://localhost:27148"
+			"value": "http://localhost:27148"
 		},
 		{
+			"id": "97c497eb-0f61-470d-94cd-e5f6bc4862c2",
 			"key": "TransactionHistory",
-			"value": "https://localhost:27144"
+			"value": "http://localhost:27144"
 		},
 		{
+			"id": "4bb8d4e1-79ed-436f-b9c1-b5420d87d405",
 			"key": "sastoken",
 			"value": "SharedAccessSignature sr=https%3a%2f%2fnagp-microservices-assignment.servicebus.windows.net&sig=MflZ%2fDPNFMFqKoev7ZmjLNcHBMEIHBVmUZvJ30bXB7o%3d&se=1618161821&skn=UserPolicy"
 		}
