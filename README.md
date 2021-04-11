@@ -6,17 +6,14 @@ Backend application for the Trading application.
 1. Visual Studio 2019 (with all the updates)
 2. Docker desktop for Windows (latest)
  
-# How to run services 
-## Option-1: Docker-Compose
-#### Click on the start.sh file
+# How to run services using Docker-Compose
+### Click on the "start.sh" file
   -> start.sh
      -> build-script.sh
      -> docker-compose up 
 ![image](https://user-images.githubusercontent.com/2247913/114290168-859fd000-9a4b-11eb-888f-058f620d26af.png)
 
-## Option-2: Visual Studio 2019
-1. Open the solution for each service and run each of the project. 
-2. Run Postman collection to validate use cases. 
+![556g0p](https://user-images.githubusercontent.com/2247913/114293924-58154f80-9a68-11eb-8739-585beb6604cd.gif)
 
 # Specs
 
