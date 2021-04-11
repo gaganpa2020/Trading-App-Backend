@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{C181AB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradingCompany.Shared", "..\..\Common\TradingCompany.Shared\TradingCompany.Shared.csproj", "{C63663FF-B99F-48EB-9CC8-8B710346876C}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F4FEBDB7-8B81-46CC-972E-3F28C6C935A4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,10 +25,6 @@ Global
 		{C63663FF-B99F-48EB-9CC8-8B710346876C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C63663FF-B99F-48EB-9CC8-8B710346876C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C63663FF-B99F-48EB-9CC8-8B710346876C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F4FEBDB7-8B81-46CC-972E-3F28C6C935A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4FEBDB7-8B81-46CC-972E-3F28C6C935A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4FEBDB7-8B81-46CC-972E-3F28C6C935A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4FEBDB7-8B81-46CC-972E-3F28C6C935A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,42 @@ services:
   tradingcompany.authenticationservice:
     image: tradingcompanyauthenticationservice
     ports: 
-      - 45332:80
+      - 27143:80
     build:
       context: ./AuthenticationService/TradingCompany.AuthenticationService
+      dockerfile: Dockerfile
+  tradingcompany.accountservice:
+    image: tradingcompanyaccountservice
+    ports: 
+      - 27145:80
+    build:
+      context: ./AccountService/TradingCompany.AccountService/TradingCompany.AccountService
+      dockerfile: Dockerfile
+  tradingcompany.exchangeservice:
+    image: tradingcompanyexchangeservice
+    ports: 
+      - 27148:80
+    build:
+      context: ./ExchangeService/TradingCompany.ExchangeService/TradingCompany.ExchangeService
+      dockerfile: Dockerfile
+  tradingcompany.notificationservice:
+    image: tradingcompanynotificationservice
+    ports: 
+      - 27147:80
+    build:
+      context: ./NotificationService/TradingCompany.NotificationService/TradingCompany.NotificationService
+      dockerfile: Dockerfile
+  tradingcompany.transactionhistoryservice:
+    image: tradingcompanytransactionhistoryservice
+    ports: 
+      - 27144:80
+    build:
+      context: ./TradingHistoryService/TradingCompany.TransactionHistory/TradingCompany.TransactionHistory
+      dockerfile: Dockerfile
+  tradingcompany.transactionservice:
+    image: tradingcompanytransactionservice
+    ports: 
+      - 27146:80
+    build:
+      context: ./TradingService/TradingCompany.TradingService/TradingCompany.TradingService
       dockerfile: Dockerfile
