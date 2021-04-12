@@ -14,6 +14,8 @@ Backend application for the Trading application.
 ![image](https://user-images.githubusercontent.com/2247913/114290168-859fd000-9a4b-11eb-888f-058f620d26af.png)
 
 For demo click here: https://github.com/gaganpa2020/Trading-App-Backend/blob/main/Demo%20-%20How%20to%20run%20services.gif
+
+
 ![556g0p](https://user-images.githubusercontent.com/2247913/114293924-58154f80-9a68-11eb-8739-585beb6604cd.gif)
 
 # Specs
